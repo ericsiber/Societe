@@ -7,14 +7,12 @@ public class Personne {
 
 	public Personne(String nom, String prenom) {
 		super();
-		this.prenom = prenom;
-		this.nom = nom;
+		setPrenom(prenom);
+		setNom(nom);
 	}
 
 	public Personne(String prenom, String nom, Integer age) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
+		this(nom, prenom);
 		this.age = age;
 	}
 
@@ -30,7 +28,7 @@ public class Personne {
 		return prenom;
 	}
 
-	public void setPrenom(String prenom) {
+	private void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
@@ -38,7 +36,7 @@ public class Personne {
 		return nom;
 	}
 
-	public void setNom(String nom) {
+	private void setNom(String nom) {
 		this.nom = nom;
 	}
 
