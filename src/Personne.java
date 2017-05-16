@@ -21,6 +21,18 @@ public class Personne {
 		this.age = age;
 	}
 
+	public void initialiserAdresse(String numeroVoie, String nomVoie,
+			int codePostal, String ville) {
+		if (this.getNumeroVoie() != null || this.getNomVoie() != null
+				|| this.getCodePostal() != 0 || this.getVille() != null) {
+			throw new UnsupportedOperationException("Adresse déjà initialisée");
+		}
+		this.numeroVoie = numeroVoie;
+		this.nomVoie = nomVoie;
+		this.codePostal = codePostal;
+		this.ville = ville;
+	}
+
 	public String toString() {
 		String description = prenom + " " + nom;
 		if (this.age != null) {
