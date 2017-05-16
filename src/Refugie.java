@@ -23,11 +23,19 @@ public class Refugie extends Personne {
 		setRegularise(regularise);
 	}
 
+	public boolean regulariser(String motDePasse) {
+		if ("simplon".equals(motDePasse)) {
+			setRegularise(true);
+			return true;
+		}
+		return false;
+	}
+
 	public boolean isRegularise() {
 		return regularise;
 	}
 
-	public void setRegularise(boolean regularise) {
+	private void setRegularise(boolean regularise) {
 		this.regularise = regularise;
 	}
 

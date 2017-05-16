@@ -12,5 +12,11 @@ public class Programme {
 		System.out.println(formateur);
 		System.out.println(refugieRegularise);
 		System.out.println(refugieNonRegularise);
+
+		// tentative n°1 de régularisation
+		refugieNonRegularise.regulariser("test");
+		System.out.println(refugieNonRegularise);
+		refugieNonRegularise.regulariser("simplon");
+		System.out.println(refugieNonRegularise);
 	}
 }
