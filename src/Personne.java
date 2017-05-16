@@ -5,6 +5,11 @@ public class Personne {
 	private String nom;
 	private Integer age;
 
+	private String numeroVoie;
+	private String nomVoie;
+	private int codePostal;
+	private String ville;
+
 	public Personne(String nom, String prenom) {
 		super();
 		setPrenom(prenom);
@@ -46,6 +51,38 @@ public class Personne {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public String getNumeroVoie() {
+		return numeroVoie;
+	}
+
+	public void setNumeroVoie(String numeroVoie) {
+		this.numeroVoie = numeroVoie;
+	}
+
+	public String getNomVoie() {
+		return nomVoie;
+	}
+
+	public void setNomVoie(String nomVoie) {
+		this.nomVoie = nomVoie;
+	}
+
+	public int getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 
 }
