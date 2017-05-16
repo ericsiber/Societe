@@ -3,13 +3,12 @@ public class Programme {
 		// création
 		Personne formateur = new Personne("Hovart", "Nicolas");
 		Personne moi = new Personne("Siber", "Eric", 34);
-		moi.setCodePostal(78500);
-		moi.setVille("Sartrouville");
+		moi.initialiserAdresse(new Adresse(null, null, 78500, "Sartrouville"));
 		moi.setAge(35);
 		Refugie refugieRegularise = new Refugie("Jean", "Durand", 23, true);
 		Refugie refugieNonRegularise = new Refugie("Michelle", "Blanche");
-		refugieNonRegularise.initialiserAdresse("13", "rue des fleurs", 75001,
-				"Paris");
+		refugieNonRegularise.initialiserAdresse(new Adresse("13",
+				"rue des fleurs", 75001, "Paris"));
 
 		// affichage
 		System.out.println(moi);
@@ -18,20 +17,21 @@ public class Programme {
 		System.out.println(refugieNonRegularise);
 
 		// tentative de modification d'éléments d'adresse
-		moi.setNumeroVoie("105");
-		refugieRegularise.setVille("Marseille");
-		try {
-			refugieNonRegularise.setCodePostal(75002);
-		} catch (UnsupportedOperationException e) {
-			System.out.println("Impossible de changer le code postal : "
-					+ e.getMessage());
-		}
-		// tentative déménagement complet
-		boolean resultatTentative1 = refugieNonRegularise.demenager("1",
-				"rue des lilas", 92400, "Courbevoie");
+		Adresse adresseCouranteMoi = moi.getAdresse();
+		moi.demenager(new Adresse("105", adresseCouranteMoi.getNomVoie(),
+				adresseCouranteMoi.getCodePostal(), adresseCouranteMoi
+						.getVille()));
+		Adresse nouvelleAdresseRefugie = new Adresse(null, null, 0, "Marseille");
+		refugieRegularise.demenager(nouvelleAdresseRefugie);
+
+		// tentative déménagement réfugié non régularisé
+		Adresse adresseCible = new Adresse("1", "rue des lilas", 92400,
+				"Courbevoie");
+		boolean resultatTentative1 = refugieNonRegularise
+				.demenager(adresseCible);
 		System.out.println("Résultat du déménagement : " + resultatTentative1);
 		System.out.println("Code postal du réfugié : "
-				+ refugieNonRegularise.getCodePostal());
+				+ refugieNonRegularise.getAdresse().getCodePostal());
 
 		// tentative n°1 de régularisation
 		refugieNonRegularise.regulariser("test");
@@ -39,16 +39,11 @@ public class Programme {
 		refugieNonRegularise.regulariser("simplon");
 		System.out.println(refugieNonRegularise);
 
-		// nouvelle tentative de modification d'éléments d'adresse
-		refugieNonRegularise.setCodePostal(75002);
-		System.out.println("Code postal du réfugié : "
-				+ refugieNonRegularise.getCodePostal());
-
 		// déménagement complet
-		boolean resultatTentative2 = refugieNonRegularise.demenager("1",
-				"rue des lilas", 92400, "Courbevoie");
+		boolean resultatTentative2 = refugieNonRegularise
+				.demenager(adresseCible);
 		System.out.println("Résultat du déménagement : " + resultatTentative2);
 		System.out.println("Code postal du réfugié : "
-				+ refugieNonRegularise.getCodePostal());
+				+ refugieNonRegularise.getAdresse().getCodePostal());
 	}
 }

@@ -31,14 +31,10 @@ public class Refugie extends Personne {
 		return false;
 	}
 
-	public boolean demenager(String numeroVoie, String nomVoie, int codePostal,
-			String ville) {
+	@Override
+	public boolean demenager(Adresse nouvelleAdresse) {
 		if (this.regularise) {
-			setNumeroVoie(numeroVoie);
-			setNomVoie(nomVoie);
-			setCodePostal(codePostal);
-			setVille(ville);
-			return true;
+			return super.demenager(nouvelleAdresse);
 		}
 		return false;
 	}
@@ -51,42 +47,6 @@ public class Refugie extends Personne {
 		this.regularise = regularise;
 	}
 	
-	@Override
-	public void setNumeroVoie(String numeroVoie) {
-		if (this.regularise) {
-			super.setNumeroVoie(numeroVoie);
-		} else {
-			throw new UnsupportedOperationException("Réfugié non régularisé");
-		}
-	}
-
-	@Override
-	public void setNomVoie(String nomVoie) {
-		if (this.regularise) {
-			super.setNomVoie(nomVoie);
-		} else {
-			throw new UnsupportedOperationException("Réfugié non régularisé");
-		}
-	}
-
-	@Override
-	public void setCodePostal(int codePostal) {
-		if (this.regularise) {
-			super.setCodePostal(codePostal);
-		} else {
-			throw new UnsupportedOperationException("Réfugié non régularisé");
-		}
-	}
-
-	@Override
-	public void setVille(String ville) {
-		if (this.regularise) {
-			super.setVille(ville);
-		} else {
-			throw new UnsupportedOperationException("Réfugié non régularisé");
-		}
-	}
-
 	@Override
 	public String toString() {
 		return "Refugié " + super.toString() + " "

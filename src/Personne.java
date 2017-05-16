@@ -1,14 +1,10 @@
-
 public class Personne {
 
 	private String prenom;
 	private String nom;
 	private Integer age;
 
-	private String numeroVoie;
-	private String nomVoie;
-	private int codePostal;
-	private String ville;
+	protected Adresse adresse = null;
 
 	public Personne(String nom, String prenom) {
 		super();
@@ -21,16 +17,16 @@ public class Personne {
 		this.age = age;
 	}
 
-	public void initialiserAdresse(String numeroVoie, String nomVoie,
-			int codePostal, String ville) {
-		if (this.getNumeroVoie() != null || this.getNomVoie() != null
-				|| this.getCodePostal() != 0 || this.getVille() != null) {
+	public void initialiserAdresse(Adresse adresse) {
+		if (this.adresse != null) {
 			throw new UnsupportedOperationException("Adresse déjà initialisée");
 		}
-		this.numeroVoie = numeroVoie;
-		this.nomVoie = nomVoie;
-		this.codePostal = codePostal;
-		this.ville = ville;
+		this.adresse = adresse;
+	}
+
+	public boolean demenager(Adresse nouvelleAdresse) {
+		this.adresse = nouvelleAdresse;
+		return true;
 	}
 
 	public String toString() {
@@ -65,36 +61,8 @@ public class Personne {
 		this.age = age;
 	}
 
-	public String getNumeroVoie() {
-		return numeroVoie;
-	}
-
-	public void setNumeroVoie(String numeroVoie) {
-		this.numeroVoie = numeroVoie;
-	}
-
-	public String getNomVoie() {
-		return nomVoie;
-	}
-
-	public void setNomVoie(String nomVoie) {
-		this.nomVoie = nomVoie;
-	}
-
-	public int getCodePostal() {
-		return codePostal;
-	}
-
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
+	public Adresse getAdresse() {
+		return this.adresse;
 	}
 
 }
